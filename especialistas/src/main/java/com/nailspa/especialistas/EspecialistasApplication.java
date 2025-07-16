@@ -1,13 +1,13 @@
-package com.equipo.sistema_citas;
+package com.nailspa.especialistas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SistemaCitasApplication {
+public class EspecialistasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SistemaCitasApplication.class, args);
+		SpringApplication.run(EspecialistasApplication.class, args);
 	}
 
 }
