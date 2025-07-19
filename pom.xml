@@ -42,7 +42,12 @@
 		</dependency>
 	</dependencies>
 	<modules>
+		<module>auth</module>
 		<module>billing</module>
+		<module>citas</module>
+		<module>appointment</module>
+		<module>clientes</module>
+		<module>especialistas</module>
 	</modules>
 	<build>
 		<plugins>

@@ -6,10 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
-        <relativePath/>
+        <groupId>com.equipo</groupId>
+        <artifactId>nailspa</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.neilspa</groupId>
@@ -109,6 +108,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                 <configuration>
+                    <mainClass>com.nailspa.appointment</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

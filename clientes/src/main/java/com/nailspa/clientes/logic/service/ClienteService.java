@@ -1,7 +1,5 @@
 package com.nailspa.clientes.logic.service;
 
-
-
 import com.nailspa.clientes.data.Cliente;
 import com.nailspa.clientes.data.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
