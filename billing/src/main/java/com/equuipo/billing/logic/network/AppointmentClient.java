@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.equuipo.billing.logic.data.network.AppointmentEP;
+import com.equuipo.billing.data.dto.CitaDTO;
 
-@FeignClient(name = "appointment-service", url = "http://localhost:8081")
+@FeignClient(name = "appointment-service", url = "http://localhost:8081") // Ajusta puerto si es otro
 public interface AppointmentClient {
-    @GetMapping("/buscarReservaPorCliente")
-    List<AppointmentEP> getID(@RequestParam("cliente") String idCliente);
+
+    @GetMapping("/api/citas/{id}")
+    CitaDTO obtenerCitaPorId(@PathVariable("id") String id);
 }

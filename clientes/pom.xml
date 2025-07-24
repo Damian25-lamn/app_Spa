@@ -118,7 +118,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.nailspa.clientes</mainClass>
+                    <mainClass>com.nailspa.clientes.ClientesApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

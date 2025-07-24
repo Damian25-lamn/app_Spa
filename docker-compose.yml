@@ -1,0 +1,120 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - nailspa-network
+
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    container_name: auth-service
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/nailspa-auth
+      - SPRING_DATA_MONGODB_DATABASE=nailspa_auth
+      - SERVER_PORT=8080
+    depends_on:
+      - mongo
+    networks:
+      - nailspa-network
+
+  billing:
+    build:
+      context: ./billing
+      dockerfile: Dockerfile
+    container_name: billing-service
+    ports:
+      - 8081:8081
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/nailspa-billing
+      - SPRING_DATA_MONGODB_DATABASE=nailspa_billing
+      - SERVER_PORT=8081
+    depends_on:
+      - mongo
+    networks:
+      - nailspa-network
+
+  appointment:
+    build:
+      context: ./appointment
+      dockerfile: Dockerfile
+    container_name: appointment-service
+    ports:
+      - 8082:8082
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/nailspa-appointment
+      - SPRING_DATA_MONGODB_DATABASE=nailspa_appointment
+      - SERVER_PORT=8082
+    depends_on:
+      - mongo
+    networks:
+      - nailspa-network
+
+  clientes:
+    build:
+      context: ./clientes
+      dockerfile: Dockerfile
+    container_name: clientes-service
+    ports:
+      - 8083:8083
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/nailspa-clientes
+      - SPRING_DATA_MONGODB_DATABASE=nailspa_clientes
+      - SERVER_PORT=8083
+    depends_on:
+      - mongo
+    networks:
+      - nailspa-network
+
+  especialistas:
+    build:
+      context: ./especialistas
+      dockerfile: Dockerfile
+    container_name: especialistas-service
+    ports:
+      - 8084:8084
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/nailspa-especialistas
+      - SPRING_DATA_MONGODB_DATABASE=nailspa_especialistas
+      - SERVER_PORT=8084
+    depends_on:
+      - mongo
+    networks:
+      - nailspa-network
+
+  nailspa-frontend:
+    build:
+      context: ./nailspa-frontend
+      dockerfile: Dockerfile
+    container_name: nailspa-frontend
+    ports:
+      - 3000:80
+    environment:
+      - REACT_APP_API_URL=http://localhost:8080
+    depends_on:
+      - auth
+      - billing
+      - appointment
+      - clientes
+      - especialistas
+    networks:
+      - nailspa-network
+      
+
+volumes:
+  mongo_data:
+
+
+networks:
+  nailspa-network:
+    driver: bridge

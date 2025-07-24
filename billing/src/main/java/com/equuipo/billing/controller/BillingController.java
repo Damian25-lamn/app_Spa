@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -41,6 +42,8 @@ public class BillingController {
      * GET /emitirfactura?idCita=123&amp;monto=25.0&amp;metodoPago=efectivo&amp;fecha=2025-07-10T14:30:00
      * </pre>
      */
+    
+    // Endpoint para emitir una factura
     @GetMapping("/emitirfactura")
     public org.springframework.http.ResponseEntity<?> issueInvoice(
             @RequestParam("idCita") String idCita,
@@ -67,6 +70,7 @@ public class BillingController {
         }
     }
 
+    // Endpoint para buscar todas las facturas
     @GetMapping("/buscarTodasFacturas")
     public List<BillingUI> findAll() {
         try {
@@ -76,5 +80,4 @@ public class BillingController {
                     "Error al obtener las facturas: " + e.getMessage());
         }
     }
-
 }

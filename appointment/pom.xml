@@ -11,7 +11,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.neilspa</groupId>
+    <groupId>com.nailspa</groupId>
     <artifactId>appointment</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>appointment</name>
@@ -109,7 +109,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                  <configuration>
-                    <mainClass>com.nailspa.appointment</mainClass>
+                    <mainClass>com.nailspa.appointment.AppointmentApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
